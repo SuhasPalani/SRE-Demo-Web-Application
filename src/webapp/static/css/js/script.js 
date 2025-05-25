@@ -1,0 +1,52 @@
+// Function to check the health status
+function checkHealth() {
+    document.getElementById("loader").style.display = "inline-block";  // Show loader
+    fetch('/health')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("loader").style.display = "none"; // Hide loader
+            let statusElement = document.getElementById("health-status");
+            let timestampElement = document.getElementById("health-timestamp");
+
+            if (data.status === "healthy") {
+                statusElement.classList.remove('status-unhealthy');
+                statusElement.classList.add('status-healthy');
+                statusElement.textContent = "Healthy";
+            } else {
+                statusElement.classList.remove('status-healthy');
+                statusElement.classList.add('status-unhealthy');
+                statusElement.textContent = "Unhealthy";
+            }
+
+            timestampElement.textContent = "Last checked: " + data.timestamp;
+        })
+        .catch(error => {
+            document.getElementById("loader").style.display = "none";
+            alert("Error fetching health status.");
+        });
+}
+
+// Function to fetch metrics
+function getMetrics() {
+    document.getElementById("loader").style.display = "inline-block";  // Show loader
+    fetch('/metrics')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("loader").style.display = "none"; // Hide loader
+            document.getElementById("requests-count").textContent = data.app_requests_total;
+            document.getElementById("errors-count").textContent = data.app_errors_total;
+            document.getElementById("uptime").textContent = data.app_uptime_seconds;
+        })
+        .catch(error => {
+            document.getElementById("loader").style.display = "none";
+            alert("Error fetching metrics.");
+        });
+}
+
+// Function to simulate a crash
+function simulateCrash() {
+    fetch('/crash')
+        .catch(error => {
+            alert("Error simulating crash.");
+        });
+}

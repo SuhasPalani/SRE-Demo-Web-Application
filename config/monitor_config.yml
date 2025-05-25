@@ -1,0 +1,23 @@
+targets:
+  - name: webapp
+    url: http://webapp:5000/health
+    timeout: 5
+    expected_status: 200
+  - name: webapp_metrics
+    url: http://webapp:5000/metrics
+    timeout: 5
+    expected_status: 200
+
+thresholds:
+  consecutive_failures: 3
+  response_time_ms: 2000
+
+remediation:
+  enabled: true
+  restart_service: true
+
+alerts:
+  enabled: true
+  channels:
+    - console
+    - file

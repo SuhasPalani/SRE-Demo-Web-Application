@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRE Web App Health Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</head>
+<body>
+
+    <h1>SRE Web App Health Dashboard</h1>
+
+    <div class="container">
+
+        <!-- Health Status Section -->
+        <div class="card" id="health-card">
+            <h3>Health Status</h3>
+            <div id="health-status" class="status-healthy">{{ status }}</div>
+            <div id="health-timestamp"></div>
+            <button class="button" onclick="checkHealth()">Check Health</button>
+        </div>
+
+        <!-- Metrics Section -->
+        <div class="card" id="metrics-card">
+            <h3>Metrics</h3>
+            <div class="metrics" id="metrics">
+                <p>Requests: <span id="requests-count">0</span></p>
+                <p>Errors: <span id="errors-count">0</span></p>
+                <p>Uptime: <span id="uptime">{{ uptime }}</span> seconds</p>
+            </div>
+            <button class="button" onclick="getMetrics()">Fetch Metrics</button>
+        </div>
+
+        <!-- Crash Simulation Section -->
+        <div class="card" id="crash-card">
+            <h3>Crash Simulation</h3>
+            <button class="button" onclick="simulateCrash()">Simulate Crash</button>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div class="loader" id="loader">Loading...</div>
+
+    </div>
+
+</body>
+</html>
