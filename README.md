@@ -23,14 +23,14 @@ sre-demo/
 │   ├── monitor\_config.yml
 │   └── alerts.yml
 ├── src/                     # Source code
-│   ├── **init**.py
+│   ├── __init__.py
 │   ├── monitor/             # Monitoring scripts
-│   │   ├── **init**.py
+│   │   ├── __init__.py
 │   │   ├── health\_checker.py
 │   │   ├── metrics\_collector.py
 │   │   └── alerting.py
 │   ├── webapp/              # Web application code
-│   │   ├── **init**.py
+│   │   ├── __init__.py
 │   │   ├── app.py           # Flask application entry point
 │   │   ├── templates/       # HTML files
 │   │   │   └── index.html   # Dashboard HTML file
@@ -40,7 +40,7 @@ sre-demo/
 │   │       └── js/
 │   │           └── script.js
 │   └── automation/          # Automation scripts for deployment and remediation
-│       ├── **init**.py
+│       ├── __init__.py
 │       ├── remediation.py
 │       └── deployment.py
 ├── scripts/                 # Shell scripts for setup and deployment
@@ -48,7 +48,7 @@ sre-demo/
 │   ├── setup.sh
 │   └── cleanup.sh
 ├── tests/                   # Unit tests for the application
-│   ├── **init**.py
+│   ├── __init__.py
 │   ├── test\_monitor.py
 │   └── test\_webapp.py
 ├── dashboards/              # Grafana dashboards
